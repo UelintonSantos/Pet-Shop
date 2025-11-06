@@ -1,91 +1,144 @@
-package ServiçoPet;
+Equipe do Projeto Pet Shop, Desenvolvido em Java
 
-import java.util.Scanner;
+Nomes dos Integrantes: David Silva, Eduardo Vasconcelos, Marcelo Simões,
 
-public class Caramelo {
+Ivan, Jxax, Leonardo Araújo, Victor Lima, Uelinton Queiroz.
 
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-			// Declaração de variáveis
-			String Nome;
-			double CPF;
-			String NomePet;
-			String Animal;
-			int Opcao;
+1. INTRODUÇÃO
+Este projeto foi desenvolvido em Java e representa um sistema básico de gerenciamento de um PetShop.
+O objetivo é permitir o cadastro de clientes, animais, serviços e rações, além de possibilitar o
+agendamento de serviços e a compra de rações. Ao final da execução, o programa também gera um recibo
+simples com o resumo das operações realizadas.
 
-			// Loop infinito para reiniciar o atendimento após cada operação
-			while (true) {
-			    System.out.print("\nDigite seu Nome: ");
-			    Nome = scanner.nextLine();
+O sistema foi feito de maneira simples e direta, com foco em aplicar os conceitos básicos de
+Programação Orientada a Objetos (POO): classes, objetos, atributos, métodos, listas e herança.
 
-			    System.out.print("Digite seu CPF: ");
-			    CPF = scanner.nextDouble();
-			    scanner.nextLine(); // limpa o buffer do teclado
+------------------------------------
+2. ESTRUTURA DO PROJETO
+------------------------------------
 
-			    System.out.print("\nDigite o nome do seu Pet: ");
-			    NomePet = scanner.nextLine();
+O projeto é composto pelas seguintes classes principais:
 
-			    System.out.print("\nDigite o tipo do seu Animal: ");
-			    Animal = scanner.nextLine();
+1. Pessoa.java
+   - Classe base que representa qualquer pessoa no sistema (nome e telefone).
+   - É a classe “mãe” de Cliente e Funcionário.
 
-			    System.out.println("\n---------- REGISTRADO ----------");
-			    System.out.println("Selecione uma Opção:");
-			    System.out.println("(1) Falar com Atendente(a)?");
-			    System.out.println("(2) Falar com Veterinário(a)?");
-			    System.out.println("(3) Falar com Treinador(a)?");
-			    System.out.println("(4) Consultar o Plano do Pet?");
-			    System.out.println("(5) Comprar a Ração do Pet?");
-			    System.out.print("Opção: ");
+2. Cliente.java
+   - Herda de Pessoa.
+   - Guarda uma lista de animais cadastrados pelo cliente.
 
-			    Opcao = scanner.nextInt();
-			    scanner.nextLine(); // limpa o buffer
+3. Funcionario.java
+   - Também herda de Pessoa.
+   - Representa os funcionários do PetShop (nome, telefone e cargo).
 
-			    switch (Opcao) {
-			        case 1:
-			            System.out.println("Sou o Caramelo virtual");
-			            System.out.println("\\nOk, Falar com Atendente(a).");
-			            System.out.println("Aguarde um minuto, você será direcionado ao setor de Atendimento.\n");
-			            System.out.println("Ajudo em Algum Mais?");
-			            break;
+4. Animal.java
+   - Guarda os dados dos animais: nome, espécie, idade e dono (Cliente).
 
-			        case 2:
-			            System.out.println("Sou o Caramelo virtual");
-			            System.out.println("\nOk, Falar com o Veterinário(a).");
-			            System.out.println("Aguarde um minuto, você será direcionado ao setor Veterinário.\n");
-			            System.out.println("Ajudo em Algum Mais?");
-			            break;
+5. Servico.java
+   - Representa um serviço oferecido pelo PetShop (ex: Banho, Tosa).
+   - Cada serviço tem nome, preço e horários disponíveis.
 
-			        case 3:
-			        	 System.out.println("Sou o Caramelo virtual");
-			             System.out.println("\nOk, Falar com o Treinadores(a).");
-			             System.out.println("Aguarde um minuto, você será direcionado ao setor do Treinadores(a).\n");
-			             System.out.println("Ajudo em Algum Mais?");
-			            break;
+6. Racao.java
+   - Representa uma ração vendida no PetShop (nome, preço e estoque).
 
-			        case 4:
-			        	System.out.println("Sou o Caramelo virtual");
-			            System.out.println("\nOk, Consultar o plano do Pet.");
-			            System.out.println("Aguarde um minuto, você será direcionado para a Consulta do plano do Pet.\n");
-			            System.out.println("Ajudo em Algum Mais?");
-			            break;
-			        case 5:
-			        	System.out.println("Sou o Caramelo virtual");
-			            System.out.println("\nOk, Compra a Ração do Pet.");
-			            System.out.println("Aguarde um minuto, você será direcionado para Compra a Ração do Pet.\n");
-			            System.out.println("Ajudo em Algum Mais?");
-			            break;    
+7. Agendamento.java
+   - Armazena os dados dos serviços marcados pelos clientes (cliente, animal, serviço e horário).
 
-			            
-			        default:
-			            System.out.println("\nOpção Inválida.");
-			            System.out.println("Atendimento Finalizado. Iniciando novo atendimento...\n");
-			            break;
-			    }
+8. Compra.java
+   - Representa a compra de uma ração feita por um cliente, com quantidade e valor total.
 
-			    System.out.println("\n--------------------------------------\n");
-			}
-		}
-    }
-}
+9. PetShop.java
+   - Classe principal de controle do sistema.
+   - Guarda as listas de clientes, serviços, rações, agendamentos e compras.
+   - Contém métodos para adicionar, listar e gerar recibos com totais gastos.
 
+10. Main.java
+    - É o ponto de entrada do programa.
+    - Possui um menu interativo em texto com as opções:
+        1. Cadastrar Cliente
+        2. Listar Clientes
+        3. Cadastrar Serviço
+        4. Listar Serviços
+        5. Ver horários disponíveis
+        6. Cadastrar Ração
+        7. Listar Rações
+        8. Agendar Serviço
+        9. Comprar Ração
+        0. Sair e gerar recibos
+
+------------------------------------
+3. FUNCIONAMENTO DO SISTEMA
+------------------------------------
+
+Ao iniciar o programa, já existem dois serviços (Banho e Tosa) e cinco tipos de rações cadastradas
+automaticamente, variando entre as mais baratas e as Premium.
+
+O usuário interage com o sistema por meio de números digitados no console.
+Exemplo:
+    - Se digitar 1, entra na função de cadastrar cliente.
+    - Se digitar 8, agenda um serviço.
+
+Durante o agendamento, o sistema:
+    - Pede o cliente e o animal.
+    - Pede o serviço e o horário desejado.
+    - Caso o horário já esteja ocupado, o sistema avisa e pede outro.
+
+Durante a compra de ração:
+    - O usuário escolhe o cliente e a ração.
+    - Informa a quantidade desejada.
+    - Se houver estoque, o sistema registra a compra e atualiza o estoque.
+
+Ao encerrar o programa (opção 0), o sistema mostra um RECIBO com:
+    - Nome e telefone do cliente.
+    - Lista de serviços realizados e preços.
+    - Lista de rações compradas e valores.
+    - Totais parciais e o total geral gasto.
+
+------------------------------------
+4. CONCEITOS DE PROGRAMAÇÃO APLICADOS
+------------------------------------
+
+- CLASSES E OBJETOS:
+  Cada classe representa uma entidade do mundo real (Cliente, Animal, Serviço, etc.).
+  Os objetos são as instâncias criadas dessas classes.
+
+- HERANÇA:
+  A classe Pessoa é a “mãe” de Cliente e Funcionário.
+  Isso evita repetição de código, já que ambos compartilham nome e telefone.
+
+- ENCAPSULAMENTO:
+  Os atributos das classes são acessados por métodos (get/set), garantindo segurança e organização.
+
+- COMPOSIÇÃO:
+  Um Cliente possui uma lista de Animais.
+  Um PetShop possui listas de Serviços, Clientes, Rações, etc.
+
+- COLEÇÕES (ArrayList):
+  O sistema usa ArrayList para guardar as listas de objetos, permitindo adicionar e percorrer elementos facilmente.
+
+- ESTRUTURAS DE CONTROLE:
+  O menu principal usa um laço while e um switch para navegar entre as opções.
+
+------------------------------------
+5. CONCLUSÃO
+------------------------------------
+
+Este projeto demonstra de forma prática os conceitos fundamentais da programação orientada a objetos.
+Embora simples, ele simula um pequeno sistema real de PetShop, sendo uma ótima base para alunos que
+estão aprendendo Java.
+
+Possíveis melhorias futuras:
+  - Salvar os dados em arquivos para manter o histórico.
+  - Criar uma interface gráfica (JavaFX ou Swing).
+  - Adicionar autenticação de funcionários.
+  - Implementar relatórios com filtros e datas.
+
+------------------------------------
+6. AUTORES / CRÉDITOS
+------------------------------------
+
+Trabalho desenvolvido para fins didáticos.
+Disciplina: Programação Orientada a Objetos
+Linguagem: Java
+Ano: 2025
 
