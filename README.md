@@ -1,8 +1,8 @@
 Equipe do Projeto Pet Shop, Desenvolvido em Java
 
 Nomes dos Integrantes: David Silva, Eduardo Vasconcelos, Marcelo Simões,
-
 Ivan, Jxax, Leonardo Araújo, Victor Lima, Uelinton Queiroz.
+
 
 1. INTRODUÇÃO
 Este projeto foi desenvolvido em Java e representa um sistema básico de gerenciamento de um PetShop.
